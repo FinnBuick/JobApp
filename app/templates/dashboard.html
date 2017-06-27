@@ -1,0 +1,70 @@
+{% extends "header.html" %}
+
+{% block tablestyle %}
+table {
+width: 100%;
+}
+
+thead, tbody, tr, td, th { display: block; }
+
+tr:after {
+content: ' ';
+display: block;
+visibility: hidden;
+clear: both;
+}
+
+thead th {
+height: 30px;
+
+/*text-align: left;*/
+}
+
+tbody {
+height: 100%;
+overflow-y: auto;
+}
+
+thead {
+/* fallback */
+}
+
+
+tbody td, thead th {
+width: 20%;
+float: left;
+}
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid col-md-2" style="padding: 0px 5px 0px 0px">
+    <ul class="nav nav-pills nav-stacked">
+        <li role="presentation" class="active"><a href="#">Dashboard</a></li>
+        <li role="presentation"><a href="#">Add</a></li>
+        <li role="presentation"><a href="#">Delete</a></li>
+    </ul>
+</div>
+
+<div class="panel panel-default col-md-10" style="padding-top: 5px;">
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Job ID</th>
+            <th>Job Name</th>
+            <th>Client Name</th>
+            <th>Account Manager</th>
+            <th>Start Date</th>
+        </tr>
+        </thead>
+        <tbody style="overflow-y: scroll; height: 850px;">
+        {% for row in data %}
+        <tr>
+            {% for d in row %}
+            <td>{{ d }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
