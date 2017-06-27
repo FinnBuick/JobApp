@@ -1,0 +1,56 @@
+6222	Harvey Norman @ IEM 2017	VIM	Damian Ryals	26-06-17
+6223	Eminence Organics @ Sydney Beauty Show 2017	Green Living Cosmetics	Sam Mancell	27-06-17
+6224	Tiger Nutrition Storage 12months 1/5/17 - 1/5/18	Tiger Nutrition	Sam Mancell	28-06-17
+6225	Purchasing stock materials	ExhibitionCo	Brigitte Bailey	29-06-17
+6226	Frontier Software @ Melbourne HR Summit 2017	Frontier Software	Damian Ryals	30-06-17
+6227	Matrix LED @ Kube 2017	Matrix LED	Andy Buick	01-07-17
+6228	Sony @ TEDS 2017	Sony Australia	Monica Chang	02-07-17
+6229	Healthy Care TV Set + Showroom 2017	Healthy Care	Damian Ryals	03-07-17
+6230	Sony Good Guys Walls & Gondolas 2017 - Phase 4	Sony Australia	Monica Chang	04-07-17
+6231	EXCO City of Sydney @ Mobile Photo/Video Station for COS Library 2017	City of Sydney	Monica Chang	05-07-17
+6232	PPG Taubmans @ Bunnings Tour 2017	PPG Taubmans	Damian Ryals	06-07-17
+6233	Grass Valley @ SMPTE 2017	Grass Valley	Damian Ryals	07-07-17
+6234	Frontier Software @ Technology in Government 2017	Frontier Software	Damian Ryals	08-07-17
+6235	Canon @ JB Wall Fit Out Design Time 2017	Canon Australia	Monica Chang	09-07-17
+6236	Scentre Group @ Christmans Gifiting Suite 2017	Scentre Group	Monica Chang	10-07-17
+6237	Sony 1000X Airport Display 2017	Sony Australia	Monica Chang	11-07-17
+6238	Sony @ SMPTE 2017	Sony Australia	Monica Chang	12-07-17
+6239	Design ID Supplies @ Security Expo 2017	ID Supplies	Stephanie Zhang	13-07-17
+6240	Pro Audio TV @ SMPTE 2017	Pro Audio 	Stephanie Zhang	14-07-17
+6241	Sony @ Westfield Christchurch NZ 2017	Sony Australia	Monica Chang	15-07-17
+6242	Indonesia @ Cebit 2017	PT. Pedang 	Sam Mancell	16-07-17
+6243	Sony @ JB Home Entertainment 2017	Sony Australia	Monica Chang	17-07-17
+6244	Sony @ HVN Audio Bench 2017	Sony Australia	Monica Chang	18-07-17
+6245	175 Years Exhibition 2017	City of Sydney	Monica Chang	19-07-17
+6246	Basketball court Cover Sheets @ IEM 2017	VIM	Damian Ryals	20-07-17
+6247	Info signage panels @ IEM 2017	VIM	Damian Ryals	21-07-17
+6248	ACER @ Edutech 2017	ECI365	Damian Ryals	22-07-17
+6249	Plantronics HVN POS @ Alexandria 2017	Plantronics	Damian Ryals	23-07-17
+6250	Italy @ Fine Food 2017	Italian Trade Agency 	Damian Ryals	24-07-17
+6251	Canon @ SMPTE 2017	Canon Australia	Monica Chang	25-07-17
+6252	Ubisoft @ JB/EB/PAX 2017	Ubisoft	Damian Ryals	26-07-17
+6253	Sony @ Alpha Awards 2017	Sony Australia	Monica Chang	27-07-17
+6254	Nokia Mobile showcase @ Sydney event 2017	Nokia Australia	Monica Chang	28-07-17
+6255	Nokia Mobile showcase @ Melbourne event 2017	Nokia Australia	Monica Chang	29-07-17
+6256	Nokia Mobile showcase @ Auckland event 2017	Nokia Australia	Monica Chang	30-07-17
+6257	Nokia Mobile showcase @ Wellington event 2017	Nokia Australia	Monica Chang	31-07-17
+6258	Nokia Bell labs@ Singapore 2017	Nokia Singapore	Monica Chang	01-08-17
+6259	Nokia @ APAC Campaign 2017	Nokia Singapore	Monica Chang	02-08-17
+6260	Industrial Info Resources @ AIMEX 2017	Industrial Info Resources	Sam Mancell	03-08-17
+6261	Sony JB/TGG/BB Lightbox Inversion 2017	Sony Australia	Monica Chang	04-08-17
+6262	Synergy Fabric banner @ Synergy Events May 2017	Synergy Events 	Monica Chang	05-08-17
+6263	Canon Kiosk Maintenance 2017	Digi Direct	Monica Chang	06-08-17
+6264	VIM @ IEM 2017 	VIM	Damian Ryals	07-08-17
+6265	Video Craft @ SMPTE 2017	Video Craft	Sam Mancell	08-08-17
+6266	Glenlivet Display 2017	PIM Group	Monica Chang	09-08-17
+6267	Cold Shield @ Food Pro 2017	Cold Shield	Stephanie Zhang	10-08-17
+6268	Nokia @ Thailand services video 2017	Nokia	Monica Chang	11-08-17
+6269	Butter Cookies @ Fine Foods 2017	Devon Foods	Stephanie Zhang	12-08-17
+6270	JMW Fabric Print May 2017 	JMW	Terry Callaghan	13-08-17
+6271	DFP Star Prize Wheel 2017	Douglas Fabian Productions	Terry Callaghan	14-08-17
+6272	Quixant @ AGE 2017	Quixant	Damian Ryals	15-08-17
+6273	Corsair Solutions @ SMPTE 2017	Corsair Solutions	Damian Ryals	16-08-17
+6274	Sony @ Integrate 2017	Sony Australia	Monica Chang	17-08-17
+6275	Absolut Display 2017	PIM Group	Monica Chang	18-08-17
+6276	Sprintquip @ AGE 2017	SprintQuip Australia	Damian Ryals	19-08-17
+6277	Eltek @ DCD 2017	Eltek	Stephanie Zhang	20-08-17

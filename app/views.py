@@ -2,16 +2,17 @@ from flask import render_template, flash, redirect, request, url_for
 from app import app
 import csv
 
-@app.route('/')
-def homepage():
-    return render_template('main.html')
-
 @app.route('/dashboard/')
 def dashboard():
     with open('testData.txt', 'r') as f:
         reader = csv.reader(f, delimiter="\t")
         data = list(reader)
     return render_template('dashboard.html', data=data)
+
+
+@app.route('/addjob/')
+def add_job():
+    return render_template('addjob.html')
 
 
 @app.errorhandler(404)
@@ -24,6 +25,7 @@ def page_not_found(e):
     return render_template('405.html')
 
 
+@app.route('/')
 @app.route('/login/', methods=['GET', 'POST'])
 def login_page():
 
