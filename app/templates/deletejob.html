@@ -1,5 +1,41 @@
 {% extends "header.html" %}
 
+{% block tablestyle %}
+table {
+width: 100%;
+}
+
+thead, tbody, tr, td, th { display: block; }
+
+tr:after {
+content: ' ';
+display: block;
+visibility: hidden;
+clear: both;
+}
+
+thead th {
+height: 30px;
+
+/*text-align: left;*/
+}
+
+tbody {
+height: 100%;
+overflow-y: auto;
+}
+
+thead {
+/* fallback */
+}
+
+
+tbody td, thead th {
+width: 16.6%;
+float: left;
+}
+{% endblock %}
+
 {% block body %}
 <div class="container-fluid col-md-2" style="padding: 0px 5px 0px 0px">
     <ul class="nav nav-pills nav-stacked">
@@ -21,7 +57,7 @@
             <th>Delete</th>
         </tr>
         </thead>
-        <tbody style="overflow-y: scroll; height: 85vh;">
+        <tbody style="overflow-y: scroll; height: 75vh;">
         {% for row in data %}
         <tr>
             {% for d in row %}
