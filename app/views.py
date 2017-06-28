@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect, request, url_for
 from app import app
 from dbconnect import connection
-import csv
+from .forms import JobForm
 
 
 @app.route('/')
@@ -13,19 +13,39 @@ def dashboard():
         data = list(cursor.fetchall())
     except Exception as e:
         return(str(e))
-    
+
     return render_template('dashboard.html', data=data)
 
 
-@app.route('/addjob/')
+@app.route('/addjob/', methods=['GET', 'POST'])
 def add_job():
-    return render_template('addjob.html')
+    try:
+        cursor, conn = connection()
+        cursor.execute("SELECT DISTINCT AccountManager FROM job ORDER BY AccountManager")
+        accmanagers = cursor.fetchall()
+        flash(accmanagers)
 
-@app.route('/deletejob/')
+        cursor.execute("SELECT DISTINCT ClientName FROM job ORDER BY ClientName")
+        clients = cursor.fetchall()
+        it = iter(clients)
+        res = zip(it, it)
+        flash(res)
+    except Exception as e:
+        return(str(e))
+
+    form = JobForm()
+    form.clientname.choices = res
+    return render_template('addjob.html', form=form,  accmanagers=accmanagers)
+
+@app.route('/deletejob/', methods=['GET', 'POST'])
 def delete_job():
-    with open('testData.txt', 'r') as f:
-        reader = csv.reader(f, delimiter="\t")
-        data = list(reader)
+    try:
+        cursor, conn = connection()
+        cursor.execute("SELECT JobID, JobName, ClientName, AccountManager, StartDate FROM job ORDER BY jobID DESC")
+        data = list(cursor.fetchall())
+    except Exception as e:
+        return(str(e))
+
     return render_template('deletejob.html', data=data)
 
 
