@@ -1,12 +1,24 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms import SelectField
+from wtforms import PasswordField
 from wtforms import SubmitField
-from wtforms.validators import DataRequired
+from wtforms import BooleanField
+from wtforms.validators import *
 
+
+class RegistrationForm(FlaskForm):
+    username     = StringField('Username', validators=[length(min=4, max=25)])
+    email        = StringField('Email Address', validators=[length(min=6, max=35)])
+    password = PasswordField('New Password', validators=[
+        DataRequired(),
+        EqualTo('confirm', message='Passwords must match')
+    ])
+    confirm = PasswordField('Repeat Password')
+    register = SubmitField(u'Register')
 
 class JobForm(FlaskForm):
-    jobname = StringField(u'jobname', validators=[DataRequired()])
-    clientname = SelectField(u'clientname', validators=[DataRequired()])
-    accountmanager = StringField(u'accountmanager', validators=[DataRequired()])
+    jobname = StringField(u'jobname', validators=[DataRequired(), length(max=65)])
+    clientname = SelectField(u'clientname', validators=[DataRequired(), length(max=65)])
+    accountmanager = SelectField(u'accountmanager', validators=[DataRequired(), length(max=65)])
     submit = SubmitField(u'Submit')
