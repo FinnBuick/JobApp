@@ -16,7 +16,7 @@ def dashboard():
         cursor.execute("SELECT JobID, JobName, ClientName, AccountManager, StartDate FROM job ORDER BY jobID DESC")
         data = list(cursor.fetchall())
     except Exception as e:
-        return(str(e))
+        return (str(e))
 
     return render_template('dashboard.html', data=data, form=form)
 
@@ -46,12 +46,36 @@ def add_job():
         accmanagerchoices = [(key, key) for key in arr]
 
     except Exception as e:
-        return(str(e))
+        return (str(e))
 
-    form = JobForm()
+    form = JobForm(request.form)
     form.clientname.choices = clientchoices
     form.accountmanager.choices = accmanagerchoices
+
+    try:
+        cursor, conn = connection()
+
+        if request.method == 'POST' and form.validate():
+            jobname = form.jobname.data
+            clientname = form.clientname.data
+            installdate = form.installdate.data
+            accountmanager = form.accountmanager.data
+
+            cursor.execute("INSERT INTO Job (JobName, ClientName, InstallDate, AccountManager) VALUES (?, ?, ?, ?)",
+                           (thwart(jobname), thwart(clientname), thwart(installdate), thwart(accountmanager)))
+            conn.autocommit()
+
+            flash("Job successfully submitted!")
+            cursor.close()
+            conn.close()
+            gc.collect()
+            return 'Form submitted successfully! '
+
+    except Exception as e:
+        return (str(e))
+
     return render_template('addjob.html', form=form)
+
 
 @app.route('/deletejob/', methods=['GET', 'POST'])
 def delete_job():
@@ -60,7 +84,7 @@ def delete_job():
         cursor.execute("SELECT JobID, JobName, ClientName, AccountManager, StartDate FROM job ORDER BY jobID DESC")
         data = list(cursor.fetchall())
     except Exception as e:
-        return(str(e))
+        return (str(e))
 
     return render_template('deletejob.html', data=data)
 
@@ -77,7 +101,6 @@ def page_not_found(e):
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login_page():
-
     error = ""
     try:
         if request.method == 'POST':
@@ -120,7 +143,7 @@ def register_page():
                 return render_template("register.html", form=form)
             else:
                 cursor.execute("INSERT INTO users (username, passwd, email) VALUES (%s, %s, %s",
-                               thwart(username),thwart(password), thwart(email))
+                               thwart(username), thwart(password), thwart(email))
                 conn.autocommit()
                 flash("Thanks for registering!")
                 cursor.close()

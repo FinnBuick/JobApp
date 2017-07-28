@@ -1,16 +1,35 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <me>
     <meta charset="UTF-8">
     <title>JobApp</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap3-typeahead.js') }}"></script>
-    <link rel="shortcut icon" href="{{ url_for('static', filename='images/exco.png') }}" type="image/x-icon">
-    <style>{% block tablestyle %}{% endblock %}</style>
-    </head>
+    <!---
+        <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/datepicker.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> --->
+
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="./css/prettify-1.0.css" rel="stylesheet">
+    <link href="./css/base.css" rel="stylesheet">
+    <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css"
+          rel="stylesheet">
+
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+    <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+
+    <style type="text/css">
+
+    </style>
+
+    <title></title>
 
     <header>
 
@@ -64,66 +83,66 @@
                         <a role="presentation" class="active" data-toggle="modal" data-target="#register" href="#"><span
                                 class="glyphicon glyphicon-pencil"></span> Sign up</a>
 
-                            <div class="modal fade" id="register" tabindex="-1" role="dialog"
-                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">×</span></button>
-                                            <h4 class="modal-title" id="exampleModalLabel">Register</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="container">
-
-                                                <form method=post action="/register">
-                                                    <dl>
-
-                                                        <dt><label for="username">Username</label>
-                                                        <dd><input id="username" name="username" type="text" value="">
-
-                                                        </dd>
-
-
-                                                        <dt><label for="email">Email Address</label>
-                                                        <dd><input id="email" name="email" type="text" value="">
-
-                                                        </dd>
-
-
-                                                        <dt><label for="password">New Password</label>
-                                                        <dd><input id="password" name="password" type="password"
-                                                                   value="">
-
-                                                        </dd>
-
-
-                                                        <dt><label for="confirm">Repeat Password</label>
-                                                        <dd><input id="confirm" name="confirm" type="password" value="">
-
-                                                        </dd>
-
-
-                                                        <dt><label for="accept_tos">I accept the <a href="/about/tos"
-                                                                                                    target="blank">Terms
-                                                            of Service</a> and <a href="/about/privacy-policy"
-                                                                                  target="blank">Privacy Notice</a>
-                                                            (updated Jan 22, 2015)</label>
-                                                        <dd><input id="accept_tos" name="accept_tos" type="checkbox"
-                                                                   value="y">
-
-                                                        </dd>
-
-                                                    </dl>
-                                                    <p><input type=submit value=Register>
-                                                </form>
-
-                                            </div>
-                                        </div>
-
+                        <div class="modal fade" id="register" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span></button>
+                                        <h4 class="modal-title" id="exampleModalLabel">Register</h4>
                                     </div>
+                                    <div class="modal-body">
+                                        <div class="container">
+
+                                            <form method=post action="/register">
+                                                <dl>
+
+                                                    <dt><label for="username">Username</label>
+                                                    <dd><input id="username" name="username" type="text" value="">
+
+                                                    </dd>
+
+
+                                                    <dt><label for="email">Email Address</label>
+                                                    <dd><input id="email" name="email" type="text" value="">
+
+                                                    </dd>
+
+
+                                                    <dt><label for="password">New Password</label>
+                                                    <dd><input id="password" name="password" type="password"
+                                                               value="">
+
+                                                    </dd>
+
+
+                                                    <dt><label for="confirm">Repeat Password</label>
+                                                    <dd><input id="confirm" name="confirm" type="password" value="">
+
+                                                    </dd>
+
+
+                                                    <dt><label for="accept_tos">I accept the <a href="/about/tos"
+                                                                                                target="blank">Terms
+                                                        of Service</a> and <a href="/about/privacy-policy"
+                                                                              target="blank">Privacy Notice</a>
+                                                        (updated Jan 22, 2015)</label>
+                                                    <dd><input id="accept_tos" name="accept_tos" type="checkbox"
+                                                               value="y">
+
+                                                    </dd>
+
+                                                </dl>
+                                                <p><input type=submit value=Register>
+                                            </form>
+
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
+                        </div>
                 </div>
             </ul>
             </ul>
@@ -133,25 +152,36 @@
 
     <body>
 
-	{% block body %}{% endblock %}
+    {% block body %}{% endblock %}
 
     <div class="container-fluid" style="min-height:100%; padding-top: 5px; padding-left: 10px">
-	{% with messages = get_flashed_messages() %}
-	  {% if messages %}
-	    {% for message in messages %}
-		  <div class="alert alert-warning alert-dismissible" role="alert">
-		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-			{{message}}
-		  </div>
-		{% endfor %}
-	  {% endif %}
-	{% endwith %}
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">×</span></button>
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
 
-	</div>
-
+    </div>
+<!--
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>-->
 
+    <script type="text/javascript">
+      $(function() {
+        $('#datetimepicker1').datetimepicker({
+            format: 'YYYY-MM-DD'
+        });
+      });
+
+
+
+    </script>
     </body>
 
 </html>
