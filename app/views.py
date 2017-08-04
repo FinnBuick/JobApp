@@ -7,6 +7,7 @@ from .forms import JobForm, RegistrationForm
 import gc
 
 
+
 @app.route('/')
 @app.route('/dashboard/')
 def dashboard():
@@ -23,6 +24,7 @@ def dashboard():
 
 @app.route('/addjob/', methods=['GET', 'POST'])
 def add_job():
+    # Fetch data for drop down selection
     try:
         cursor, conn = connection()
         cursor.execute("SELECT DISTINCT AccountManager FROM job ORDER BY AccountManager")
@@ -52,24 +54,24 @@ def add_job():
     form.clientname.choices = clientchoices
     form.accountmanager.choices = accmanagerchoices
 
+    # Handle form data and update database
     try:
         cursor, conn = connection()
 
-        if request.method == 'POST' and form.validate():
+        if form.validate_on_submit():
+            flash("Job successfully submitted!")
             jobname = form.jobname.data
             clientname = form.clientname.data
             installdate = form.installdate.data
             accountmanager = form.accountmanager.data
 
-            cursor.execute("INSERT INTO Job (JobName, ClientName, InstallDate, AccountManager) VALUES (?, ?, ?, ?)",
-                           (thwart(jobname), thwart(clientname), thwart(installdate), thwart(accountmanager)))
+            cursor.execute("INSERT INTO Job (JobName, ClientName, InstallDate, AccountManager) VALUES (?, ?, ?, ?)",(thwart(jobname), thwart(clientname), thwart(installdate), thwart(accountmanager)))
             conn.autocommit()
 
-            flash("Job successfully submitted!")
             cursor.close()
             conn.close()
             gc.collect()
-            return 'Form submitted successfully! '
+            return redirect(url_for('dashboard'))
 
     except Exception as e:
         return (str(e))

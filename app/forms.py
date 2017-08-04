@@ -11,7 +11,7 @@ from wtforms.validators import *
 class RegistrationForm(FlaskForm):
     username     = StringField('Username', validators=[length(min=4, max=25)])
     email        = StringField('Email Address', validators=[length(min=6, max=35)])
-    password = PasswordField('New Password', validators=[
+    password = PasswordField('Enter Password', validators=[
         DataRequired(),
         EqualTo('confirm', message='Passwords must match')
     ])
