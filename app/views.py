@@ -24,6 +24,7 @@ def dashboard():
 
 @app.route('/addjob/', methods=['GET', 'POST'])
 def add_job():
+
     # Fetch data for drop down selection
     try:
         cursor, conn = connection()
@@ -58,16 +59,20 @@ def add_job():
     try:
         cursor, conn = connection()
 
+        flash(request.form)
+
         if form.validate_on_submit():
-            flash("Job successfully submitted!")
+
             jobname = form.jobname.data
             clientname = form.clientname.data
             installdate = form.installdate.data
             accountmanager = form.accountmanager.data
 
-            cursor.execute("INSERT INTO Job (JobName, ClientName, InstallDate, AccountManager) VALUES (?, ?, ?, ?)",(thwart(jobname), thwart(clientname), thwart(installdate), thwart(accountmanager)))
-            conn.autocommit()
+            cursor.execute("INSERT INTO Job (JobName, ClientName, InstallDate, AccountManager) VALUES (?, ?, ?, ?)",
+                           (thwart(jobname), thwart(clientname), thwart(installdate), thwart(accountmanager)))
 
+            conn.commit()
+            flash("Job successfully submitted!")
             cursor.close()
             conn.close()
             gc.collect()

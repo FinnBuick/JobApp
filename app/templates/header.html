@@ -152,8 +152,6 @@
 
     <body>
 
-    {% block body %}{% endblock %}
-
     <div class="container-fluid" style="min-height:100%; padding-top: 5px; padding-left: 10px">
         {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -168,6 +166,8 @@
         {% endwith %}
 
     </div>
+
+    {% block body %}{% endblock %}
 <!--
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>-->
