@@ -149,7 +149,7 @@ def register_page():
                 flash("That username is already taken, please try another")
                 return render_template("register.html", form=form)
             else:
-                cursor.execute("INSERT INTO users (username, passwd, email) VALUES (%s, %s, %s",
+                cursor.execute("INSERT INTO users (username, password, email) VALUES (%s, %s, %s",
                                thwart(username), thwart(password), thwart(email))
                 conn.autocommit()
                 flash("Thanks for registering!")
