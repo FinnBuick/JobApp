@@ -64,17 +64,16 @@ float: left;
             {% for d in row %}
             <td>{{ d }}</td>
             {% endfor %}
-            <td><button type="submit" onclick="myFunction()" class="btn btn-default btn-sm delete">
-                <span class="glyphicon glyphicon-trash"></span></button></td>
+            <td>
+                <form method=post action="{{ url_for('delete', id=row[0]) }}">
+                <button type="submit" class="btn btn-default btn-sm delete">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+            </td>
+            </form>
         </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <script>
-    function myFunction() {
-        document.getElementById("myTable").deleteRow(0);
-    }
-    </script>
 </div>
 {% endblock %}

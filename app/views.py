@@ -97,11 +97,12 @@ def delete_job():
 
     return render_template('deletejob.html', data=data)
 
-@app.route('/delete/<int:id>', methods=['POST'])
+@app.route('/delete/<id>', methods=['POST'])
 def delete(id):
+
     try:
         cursor, conn = connection()
-        cursor.execute("DELETE from job WHERE JobID = %s", id)
+        cursor.execute("DELETE from job WHERE JobID = {}".format(id))
         conn.commit()
         cursor.close()
         conn.close()
