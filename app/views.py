@@ -4,6 +4,7 @@ from passlib.hash import sha256_crypt
 from MySQLdb import escape_string as thwart
 from dbconnect import connection
 from .forms import JobForm, RegistrationForm
+import datetime
 import gc
 
 
@@ -59,23 +60,23 @@ def add_job():
     try:
         cursor, conn = connection()
 
-        flash(request.form)
-
         if form.validate_on_submit():
 
             jobname = form.jobname.data
             clientname = form.clientname.data
+            startdate = datetime.date.today()
             installdate = form.installdate.data
             accountmanager = form.accountmanager.data
 
-            cursor.execute("INSERT INTO Job (JobName, ClientName, InstallDate, AccountManager) VALUES (?, ?, ?, ?)",
-                           (thwart(jobname), thwart(clientname), thwart(installdate), thwart(accountmanager)))
+            cursor.execute("INSERT INTO `Job` (JobName, ClientName, StartDate, InstallDate, AccountManager) VALUES (%s, %s, %s, %s, %s)",
+                           (thwart(jobname), thwart(clientname), startdate, thwart(installdate.strftime('%Y-%m-%d %H:%M:%S')), thwart(accountmanager)))
 
             conn.commit()
             flash("Job successfully submitted!")
             cursor.close()
             conn.close()
             gc.collect()
+
             return redirect(url_for('dashboard'))
 
     except Exception as e:
@@ -86,14 +87,30 @@ def add_job():
 
 @app.route('/deletejob/', methods=['GET', 'POST'])
 def delete_job():
+    # Populate table from database
     try:
         cursor, conn = connection()
-        cursor.execute("SELECT JobID, JobName, ClientName, AccountManager, StartDate FROM job ORDER BY jobID DESC")
+        cursor.execute("SELECT JobID, JobName, ClientName, AccountManager, StartDate, InstallDate FROM job ORDER BY jobID DESC")
         data = list(cursor.fetchall())
     except Exception as e:
         return (str(e))
 
     return render_template('deletejob.html', data=data)
+
+@app.route('/delete/<int:id>', methods=['POST'])
+def delete(id):
+    try:
+        cursor, conn = connection()
+        cursor.execute("DELETE from job WHERE JobID = %s", id)
+        conn.commit()
+        cursor.close()
+        conn.close()
+        gc.collect()
+
+    except Exception as e:
+        return (str(e))
+
+    return redirect(url_for('dashboard'))
 
 
 @app.errorhandler(404)
