@@ -99,7 +99,7 @@ $(document).on("click", ".open-ConfirmDialog", function () {
                 <p class="well well-sm" id="jobId"/></p>
             </div>
             <div class="modal-footer">
-                <form method="DELETE" action="/delete">
+                <form method="POST" action="{{ url_for('delete') }}">
                     <input type="hidden" id="selectedJob" name="id" value="">
                     <button type="submit" class="btn btn-danger">Delete</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
