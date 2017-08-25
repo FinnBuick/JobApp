@@ -97,7 +97,8 @@ def delete_job():
 
     return render_template('deletejob.html', data=data)
 
-@app.route('/delete/<id>', methods=['POST'])
+
+@app.route('/delete/<int:id>', methods=['DELETE', 'POST'])
 def delete(id):
 
     try:
@@ -108,10 +109,12 @@ def delete(id):
         conn.close()
         gc.collect()
 
+        flash("Job deleted successfully!")
+
     except Exception as e:
         return (str(e))
 
-    return redirect(url_for('dashboard'))
+    return redirect(url_for('delete_job'))
 
 
 @app.errorhandler(404)
