@@ -15,7 +15,7 @@ def dashboard():
     form = RegistrationForm()
     try:
         cursor, conn = connection()
-        cursor.execute("SELECT JobID, JobName, ClientName, AccountManager, StartDate FROM job ORDER BY jobID DESC")
+        cursor.execute("SELECT JobID, JobName, ClientName, AccountManager, StartDate, InstallDate FROM job ORDER BY jobID DESC")
         data = list(cursor.fetchall())
     except Exception as e:
         return (str(e))
@@ -78,6 +78,8 @@ def add_job():
             gc.collect()
 
             return redirect(url_for('dashboard'))
+        elif request.method == "POST":
+            flash("Job did not submit properly, please make sure you filled out all fields")
 
     except Exception as e:
         return (str(e))
@@ -100,9 +102,9 @@ def delete_job():
 
 @app.route('/delete', methods=['POST'])
 def delete():
-    id = request.form['id']
-    print(id)
+
     try:
+        id = request.form['id']
         cursor, conn = connection()
         cursor.execute("DELETE from job WHERE JobID = {}".format(id))
         conn.commit()
@@ -187,3 +189,7 @@ def register_page():
 
     except Exception as e:
         return (str(e))
+
+@app.route("/favicon.ico")
+def favicon():
+    return(url_for('static',filename='favicon.ico'))
