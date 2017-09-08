@@ -3,6 +3,7 @@ import requests, json
 access_token = 'S.4__9bcc94de60021a9ea6595480dfda2deae73c2027'
 
 ## Returns a dict mapping ClientNames in tsheets to respective tsheets jobcode ids
+## Needs optimisation since creating the dict requires multiple api calls
 def get_jobcode_ids():
     parentId = {}
     morePages = True
