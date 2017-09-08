@@ -3,6 +3,7 @@ from app import app
 from passlib.hash import sha256_crypt
 from MySQLdb import escape_string as thwart
 from dbconnect import connection
+from tsheetsAPI import post_new_job
 from .forms import JobForm, RegistrationForm
 import datetime
 import gc
@@ -68,14 +69,25 @@ def add_job():
             installdate = form.installdate.data
             accountmanager = form.accountmanager.data
 
-            cursor.execute("INSERT INTO `Job` (JobName, ClientName, StartDate, InstallDate, AccountManager) VALUES (%s, %s, %s, %s, %s)",
+            cursor.execute("INSERT INTO job (JobName, ClientName, StartDate, InstallDate, AccountManager) VALUES (%s, %s, %s, %s, %s);",
                            (thwart(jobname), thwart(clientname), startdate, thwart(installdate.strftime('%Y-%m-%d %H:%M:%S')), thwart(accountmanager)))
 
             conn.commit()
-            flash("Job successfully submitted!")
+
+            cursor.execute("SELECT `JobID` FROM job WHERE `JobName` = '{0}' LIMIT 1".format(jobname))
+
+            jobid = cursor.fetchone()
+            jobid = str(jobid[0])
+            statuscode = post_new_job(jobid, jobname, clientname)
+
+
             cursor.close()
             conn.close()
             gc.collect()
+
+            flash("Job successfully submitted!")
+            if statuscode == 200:
+                flash("Job successfully added to TSheets")
 
             return redirect(url_for('dashboard'))
         elif request.method == "POST":
@@ -193,3 +205,4 @@ def register_page():
 @app.route("/favicon.ico")
 def favicon():
     return(url_for('static',filename='favicon.ico'))
+
