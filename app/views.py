@@ -57,6 +57,8 @@ def add_job():
     form.clientnameselect.choices = clientchoices
     form.accountmanager.choices = accmanagerchoices
 
+    clientform = JobForm(request.form)
+
     # Handle form data and update database
     try:
         cursor, conn = connection()
@@ -92,6 +94,9 @@ def add_job():
             return redirect(url_for('dashboard'))
         elif request.method == "POST":
             flash("Job did not submit properly, please make sure you filled out all fields")
+
+
+
 
     except Exception as e:
         return (str(e))

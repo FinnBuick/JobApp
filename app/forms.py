@@ -23,5 +23,5 @@ class JobForm(FlaskForm):
     clientnameselect = SelectField(u'clientname', validators=[DataRequired(), length(max=65)])
     installdate = DateField(u'installdate',format='%Y-%m-%d',  validators=[DataRequired()])
     accountmanager = SelectField(u'accountmanager', validators=[DataRequired(), length(max=65)])
-    newclientname = StringField(u'clientname', validators=[DataRequired(), length(max=65)])
+    clientnamestring = StringField(u'clientname', validators=[DataRequired(), length(max=65)])
     submit = SubmitField(u'Submit')

@@ -80,12 +80,12 @@
             </div>
             <div class="modal-body">
                 <p>Please ensure the new client doesn't already exist before continuing.</p>
-                <label class="control-label" for="newclientname">Client Name:</label>
-                {{ form.newclientname(placeholder="e.g. Microsoft", class="form-control", id="newclientname") }}
+                <label class="control-label" for="clientnamestring">Client Name:</label>
+                {{ form.clientnamestring(placeholder="e.g. Microsoft", class="form-control", id="clientnamestring") }}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" name="btn" value="save" class="btn btn-primary">Save changes</button>
+                <button type="submit" name="btn" value="cancel" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
