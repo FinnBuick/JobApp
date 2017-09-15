@@ -54,7 +54,7 @@ def add_job():
         return (str(e))
 
     form = JobForm(request.form)
-    form.clientname.choices = clientchoices
+    form.clientnameselect.choices = clientchoices
     form.accountmanager.choices = accmanagerchoices
 
     # Handle form data and update database
@@ -64,7 +64,7 @@ def add_job():
         if form.validate_on_submit():
 
             jobname = form.jobname.data
-            clientname = form.clientname.data
+            clientname = form.clientnameselect.data
             startdate = datetime.date.today()
             installdate = form.installdate.data
             accountmanager = form.accountmanager.data
@@ -74,8 +74,8 @@ def add_job():
 
             conn.commit()
 
+            #POST new job to TSheets using tsheetsAPI
             cursor.execute("SELECT `JobID` FROM job WHERE `JobName` = '{0}' LIMIT 1".format(jobname))
-
             jobid = cursor.fetchone()
             jobid = str(jobid[0])
             statuscode = post_new_job(jobid, jobname, clientname)

@@ -26,9 +26,10 @@
             <label class="control-label col-sm-2" for="clientname">Client Name:</label>
             <div class="col-sm-10">
                 <div class='input-group'>
-                    {{ form.clientname(class="form-control", id="clientname") }}
+                    {{ form.clientnameselect(class="form-control", id="clientname") }}
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addClient"><span class="glyphicon glyphicon-plus"></span></button>
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addClient"><span
+                                class="glyphicon glyphicon-plus"></span></button>
                     </span>
                 </div>
             </div>
@@ -40,7 +41,8 @@
                 <div class="input-group">
                     {{ form.accountmanager(class="form-control" , id="accmanager" ) }}
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
+                        <button type="button" class="btn btn-default" data-toggle="modal"
+                                data-target="#addAccountManager"><span class="glyphicon glyphicon-plus"></span></button>
                     </span>
                 </div>
             </div>
@@ -68,23 +70,25 @@
 
 
 <div class="modal fade" id="addClient">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add a new client</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><strong>Add a new client</strong></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Please ensure the new client doesn't already exist before continuing.</p>
+                <label class="control-label" for="newclientname">Client Name:</label>
+                {{ form.newclientname(placeholder="e.g. Microsoft", class="form-control", id="newclientname") }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 
