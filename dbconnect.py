@@ -4,7 +4,8 @@ def connection():
     conn = MySQLdb.connect("localhost",
                            "root",
                            "wolfbuick99",
-                           "exhibitioncojobs")
+                           "mydb")
     cursor = conn.cursor()
+    cursor.execute("Use mydb")
 
     return cursor, conn

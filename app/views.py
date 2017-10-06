@@ -16,7 +16,7 @@ def dashboard():
     form = RegistrationForm()
     try:
         cursor, conn = connection()
-        cursor.execute("SELECT JobID, JobName, ClientName, AccountManager, StartDate, InstallDate FROM job ORDER BY jobID DESC")
+        cursor.execute("SELECT JobID, JobName, ClientName, AMName, StartDate, InstallDate FROM job, accountmanager, client WHERE job.ClientID = client.ClientID AND job.AccountManagerID = accountmanager.AccountManagerID ORDER BY jobID DESC")
         data = list(cursor.fetchall())
     except Exception as e:
         return (str(e))
@@ -30,10 +30,10 @@ def add_job():
     # Fetch data for drop down selection
     try:
         cursor, conn = connection()
-        cursor.execute("SELECT DISTINCT AccountManager FROM job ORDER BY AccountManager")
+        cursor.execute("SELECT DISTINCT AMName FROM accountmanager ORDER BY AMName;")
         accmanagers = cursor.fetchall()
 
-        cursor.execute("SELECT DISTINCT ClientName FROM job ORDER BY ClientName")
+        cursor.execute("SELECT DISTINCT ClientName FROM client ORDER BY ClientName;")
         clients = cursor.fetchall()
 
         # Converts clients into list of (key, value) pairs
@@ -71,6 +71,7 @@ def add_job():
             installdate = form.installdate.data
             accountmanager = form.accountmanager.data
 
+
             cursor.execute("INSERT INTO job (JobName, ClientName, StartDate, InstallDate, AccountManager) VALUES (%s, %s, %s, %s, %s);",
                            (thwart(jobname), thwart(clientname), startdate, thwart(installdate.strftime('%Y-%m-%d %H:%M:%S')), thwart(accountmanager)))
 
@@ -99,9 +100,25 @@ def add_job():
 
 
     except Exception as e:
-        return (str(e))
+        return str(e)
 
     return render_template('addjob.html', form=form)
+
+
+@app.route('/addclient/', methods=['POST'])
+def add_client():
+    client = request.form['clientname']
+
+    try:
+        cursor, conn = connection()
+
+
+
+    except Exception as e:
+        return str(e)
+
+    data = ''
+    return redirect(url_for("addjob"))
 
 
 @app.route('/deletejob/', methods=['GET', 'POST'])
